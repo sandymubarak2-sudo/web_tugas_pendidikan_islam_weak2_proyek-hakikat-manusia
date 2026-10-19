@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Hakikat Manusia: Perspektif Islam dan Sains</title>
+<title>Hakikat Manusia: Perspektif Islam dan Sains | Sandy Mubarak</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -201,7 +201,7 @@ footer { text-align: center; padding: 3rem 1.5rem; color: var(--muted); font-siz
     <div class="orn"><svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M10 0l2.5 7.5L20 10l-7.5 2.5L10 20l-2.5-7.5L0 10l7.5-2.5z"/></svg></div>
     <h1>Siapakah<br>manusia itu?</h1>
     <p class="lead">Manusia memiliki dimensi fisik yang terukur secara empiris dan ruh yang melampaui batas laboratorium. Situs ini menyajikan eksplorasi integratif antara wahyu ilahi dan sains modern.</p>
-    <p class="hero-arab" lang="ar" dir="rtl">وَمَا خَلَقْتُ الْجِنَّ وَالْإِنْسَ إِلَّا لِيَعْبُدُونِ</p>
+    <p class="hero-arab" lang="ar" dir="rtl">وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونِ</p>
     <p class="hero-ref">QS. Az-Zariyat: 56</p>
     <div class="btns">
       <a class="btn solid" href="#islam">Mulai dari Al-Qur’an</a>
@@ -250,7 +250,7 @@ footer { text-align: center; padding: 3rem 1.5rem; color: var(--muted); font-siz
 
     <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2">
       <div class="ar">
-        <p class="a" lang="ar" dir="rtl">وَمَا خَلَقْتُ الْجِنَّ وَالْإِنْسَ إِلَّا لِيَعْبُدُونِ</p>
+        <p class="a" lang="ar" dir="rtl">وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونِ</p>
         <p class="t">“Dan Aku tidak menciptakan jin dan manusia melainkan supaya mereka beribadah kepada-Ku.”</p>
       </div>
       <div class="tx">
@@ -339,8 +339,8 @@ footer { text-align: center; padding: 3rem 1.5rem; color: var(--muted); font-siz
     
     <div class="form">
       <div class="row">
-        <div><label for="nama">Nama Lengkap</label><input id="nama" autocomplete="name" placeholder="Contoh: Ahmad Fauzan"></div>
-        <div><label for="nim">NIM / Kelas</label><input id="nim" placeholder="Contoh: 2301... / IF-2"></div>
+        <div><label for="nama">Nama Lengkap</label><input id="nama" autocomplete="name" value="Sandy Mubarak"></div>
+        <div><label for="nim">NIM / Kelas</label><input id="nim" placeholder="Masukkan NIM Anda"></div>
       </div>
       
       <label for="r1">1. Apa gagasan paling mendasar yang mengubah cara pandang Anda tentang manusia?<small>Segarkan pemahaman dari sudut pandang Islam atau temuan sains.</small></label>
@@ -378,7 +378,7 @@ footer { text-align: center; padding: 3rem 1.5rem; color: var(--muted); font-siz
 </main>
 
 <footer>
-  <p>Dibuat untuk keperluan pembelajaran mata kuliah Pendidikan Agama Islam dan Integrasi Sains.<br>Pastikan untuk melakukan verifikasi ulang ayat melalui mushaf dan literatur tafsir otoritatif.</p>
+  <p>Dibuat oleh <b>Sandy Mubarak</b> untuk keperluan pembelajaran mata kuliah Pendidikan Agama Islam dan Integrasi Sains.<br>Universitas Negeri Padang. Pastikan untuk melakukan verifikasi ulang ayat melalui mushaf dan literatur tafsir otoritatif.</p>
 </footer>
 
 <script>
@@ -493,7 +493,7 @@ footer { text-align: center; padding: 3rem 1.5rem; color: var(--muted); font-siz
   ids.forEach(function(i){ $(i).addEventListener("input", simpan); });
 
   function teksLaporan() {
-    var n = $("nama").value.trim() || "(Tanpa Nama)", m = $("nim").value.trim();
+    var n = $("nama").value.trim() || "Sandy Mubarak", m = $("nim").value.trim();
     var s = "LAPORAN REFLEKTIF: HAKIKAT MANUSIA\n" + "Nama: " + n + (m ? " | NIM/Kelas: " + m : "") + "\n----------------------------------------\n";
     judul.forEach(function(j, k){
       s += "\n" + (k + 1) + ". " + j + "\n" + ($("r" + (k + 1)).value.trim() || "-") + "\n";
@@ -502,7 +502,7 @@ footer { text-align: center; padding: 3rem 1.5rem; color: var(--muted); font-siz
   }
 
   $("susun").onclick = function() {
-    var n = $("nama").value.trim() || "(Tanpa Nama)", m = $("nim").value.trim();
+    var n = $("nama").value.trim() || "Sandy Mubarak", m = $("nim").value.trim();
     $("hMeta").textContent = "Disusun oleh: " + n + (m ? " (" + m + ")" : "");
     var h = $("hIsi"); h.innerHTML = "";
     
