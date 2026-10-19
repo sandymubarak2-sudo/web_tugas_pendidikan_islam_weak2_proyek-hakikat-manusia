@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hakikat Manusia: Perspektif Islam dan Sains</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F7F5EE; --surface: #FFFFFF; --ink: #1E292B; --muted: #5C6B73; --line: #E2DDD0;
+  --em: #0F765E; --deep: #084C3E; --deeper: #043127; --tint: #E6F3EF; --gold: #C29B38; --gold-light: #FDF9EC;
+  --serif: "Newsreader", Georgia, serif; --sans: "Plus Jakarta Sans", system-ui, sans-serif; --arab: "Amiri", serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme=light]) {
+    --bg: #0D1614; --surface: #13221E; --ink: #E4ECE8; --muted: #95A9A0; --line: #223831;
+    --em: #2FB88B; --tint: #13332A; --gold: #D4AF37; --gold-light: #1D2A24; color-scheme: dark;
+  }
+}
+:root[data-theme=dark] {
+  --bg: #0D1614; --surface: #13221E; --ink: #E4ECE8; --muted: #95A9A0; --line: #223831;
+  --em: #2FB88B; --tint: #13332A; --gold: #D4AF37; --gold-light: #1D2A24; color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.05rem/1.8 var(--sans); -webkit-font-smoothing: antialiased; }
+
+h1, h2, h3 { font-family: var(--serif); line-height: 1.2; margin: 0 0 0.6em; letter-spacing: -0.01em; }
+h1 { font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 600; }
+h2 { font-size: clamp(2rem, 4vw, 2.7rem); font-weight: 600; }
+h3 { font-size: 1.35rem; font-weight: 600; }
+p { margin: 0 0 1.2em; max-width: 68ch; }
+:focus-visible { outline: 3px solid var(--em); outline-offset: 3px; border-radius: 6px; }
+
+#prog { position: fixed; top: 0; left: 0; height: 3.5px; width: 0; background: var(--gold); z-index: 100; transition: width 0.1s; }
+
+/* Header */
+header { position: sticky; top: 0; z-index: 90; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.bar { max-width: 1160px; margin: 0 auto; padding: 0.8rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.brand { font: 600 1.2rem var(--serif); color: var(--ink); text-decoration: none; display: flex; gap: 0.6rem; align-items: center; }
+.brand svg { width: 30px; height: 30px; color: var(--em); }
+nav ul { list-style: none; display: flex; gap: 0.3rem; margin: 0; padding: 0; }
+nav a { display: block; padding: 0.5rem 1rem; border-radius: 999px; color: var(--muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: all 0.2s ease; }
+nav a:hover { background: var(--tint); color: var(--ink); }
+nav a.on { background: var(--em); color: #fff; }
+.tools { display: flex; gap: 0.5rem; }
+.ico { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; font-size: 1.1rem; display: grid; place-items: center; transition: transform 0.2s; }
+.ico:hover { transform: scale(1.05); }
+#menuBtn { display: none; }
+
+section { padding: 6rem 1.5rem; }
+.wrap { max-width: 1160px; margin: 0 auto; }
+.lead { font-size: 1.15rem; color: var(--muted); }
+.orn { display: flex; align-items: center; gap: 0.8rem; color: var(--gold); margin: 0 0 1.2rem; }
+.orn::before, .orn::after { content: ""; height: 1px; width: 40px; background: currentColor; opacity: 0.6; }
+.orn svg { width: 14px; height: 14px; }
+
+/* Hero Section */
+#beranda { background: radial-gradient(circle at top right, var(--deep), var(--deeper)); color: #FDF9EC; position: relative; overflow: hidden; padding: 7.5rem 1.5rem 6.5rem; }
+#beranda .star { position: absolute; right: -120px; top: -100px; width: 560px; height: 560px; color: #FDF9EC; opacity: 0.08; animation: spin 160s linear infinite; pointer-events: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+#beranda .lead { color: #CFE5DD; max-width: 56ch; }
+.hero-arab { font: 400 clamp(2rem, 4.5vw, 2.9rem)/2.1 var(--arab); margin: 2.2rem 0 0; color: #FFF; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+.hero-ref { color: var(--gold); font-size: 1rem; margin: 0 0 2.5rem; font-weight: 500; }
+.btns { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.85rem 1.6rem; border-radius: 12px; font: 600 0.98rem var(--sans); text-decoration: none; border: 2px solid rgba(255,255,255,0.3); color: #FFF; background: rgba(255,255,255,0.05); cursor: pointer; transition: all 0.2s ease; backdrop-filter: blur(4px); }
+.btn:hover { transform: translateY(-2px); background: rgba(255,255,255,0.15); border-color: #fff; }
+.btn.solid { background: #FDF9EC; border-color: #FDF9EC; color: var(--deep); }
+.btn.solid:hover { background: #fff; }
+.btn.em { background: var(--em); border-color: var(--em); color: #fff; }
+.btn.em:hover { opacity: 0.9; }
+.btn.line { border-color: var(--em); color: var(--em); background: transparent; }
+.btn.line:hover { background: var(--tint); }
+.pills { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 3.5rem; }
+.pills span { border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; padding: 0.4rem 1.1rem; font-size: 0.9rem; color: #CFE5DD; background: rgba(255,255,255,0.03); }
+
+/* Tabs Perspektif Islam */
+.tabs { display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 2.2rem 0 1.5rem; }
+.tab { font: 600 0.95rem var(--sans); padding: 0.7rem 1.3rem; border-radius: 14px; border: 1.5px solid var(--line); background: var(--surface); color: var(--muted); cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.tab:hover { border-color: var(--em); color: var(--em); }
+.tab[aria-selected=true] { background: var(--em); border-color: var(--em); color: #fff; box-shadow: 0 4px 12px rgba(15,118,95,0.25); }
+.panel { display: none; background: var(--surface); border: 1px solid var(--line); border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+.panel.on { display: grid; grid-template-columns: 1.1fr 1fr; }
+.panel .ar { background: linear-gradient(145deg, var(--deep), var(--deeper)); color: #FDF9EC; padding: 2.8rem 2.4rem; display: flex; flex-direction: column; justify-content: center; }
+.panel .ar .a { font: 400 clamp(1.7rem, 3.2vw, 2.3rem)/2.2 var(--arab); direction: rtl; text-align: right; margin: 0 0 1.2rem; max-width: none; }
+.panel .ar .t { font: italic 400 1.05rem/1.7 var(--serif); color: #CFE5DD; margin: 0; }
+.panel .tx { padding: 2.8rem 2.4rem; display: flex; flex-direction: column; justify-content: center; }
+.panel .tx .k { display: inline-block; background: var(--tint); color: var(--em); font-weight: 600; font-size: 0.85rem; padding: 0.3rem 0.9rem; border-radius: 999px; margin-bottom: 1rem; width: fit-content; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* Sains Section */
+.steps { display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 1.8rem 0 1.2rem; }
+.step { flex: 1 1 140px; text-align: left; padding: 1rem 1.2rem; border-radius: 16px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; font: 600 0.98rem var(--sans); transition: all 0.2s; }
+.step small { display: block; font-weight: 400; color: var(--muted); font-size: 0.82rem; margin-top: 0.2rem; }
+.step:hover { border-color: var(--em); }
+.step[aria-pressed=true] { border-color: var(--em); background: var(--tint); box-shadow: 0 4px 12px rgba(15,118,95,0.15); }
+.sbox { background: var(--tint); border-radius: 18px; padding: 1.6rem 1.8rem; min-height: 120px; border: 1px solid color-mix(in srgb, var(--em) 20%, transparent); }
+.sbox p { margin: 0; font-size: 1.05rem; }
+.grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.8rem; margin-top: 3rem; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 2rem; border-top: 4px solid var(--em); box-shadow: 0 6px 20px rgba(0,0,0,0.02); transition: transform 0.2s; }
+.card:hover { transform: translateY(-4px); }
+.card svg { width: 36px; height: 36px; color: var(--em); margin-bottom: 1rem; }
+.card p { font-size: 0.98rem; color: var(--muted); }
+.card h3 { color: var(--ink); margin-bottom: 0.6rem; }
+
+/* Integrasi Section */
+#integrasi { background: var(--tint); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.bridge { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.5rem; align-items: stretch; margin: 2.5rem 0; }
+.bridge > div { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+.bridge .mid { display: grid; place-items: center; background: none; border: none; padding: 0; color: var(--gold); }
+.bridge .mid svg { width: 48px; height: 48px; }
+.khal { background: var(--deep); color: #FDF9EC; border-radius: 24px; padding: 2.5rem; margin-top: 2.5rem; box-shadow: 0 12px 35px rgba(8,76,62,0.2); }
+.khal h3 { color: #FDF9EC; }
+.khal > p { color: #CFE5DD; max-width: 72ch; }
+.khal ul { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.2rem; }
+.khal li { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.2rem; color: #CFE5DD; font-size: 0.95rem; }
+.khal li b { display: block; color: #FFF; margin-bottom: 0.3rem; font-size: 1.02rem; }
+
+/* Refleksi Section */
+.form { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 2.5rem; margin-top: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+label { display: block; font-weight: 600; margin: 1.5rem 0 0.5rem; color: var(--ink); }
+label small { display: block; font-weight: 400; color: var(--muted); font-size: 0.88rem; margin-top: 0.15rem; }
+input, textarea { width: 100%; font: inherit; color: var(--ink); background: var(--bg); border: 1.5px solid var(--line); border-radius: 12px; padding: 0.85rem 1rem; transition: border-color 0.2s; }
+input:focus, textarea:focus { border-color: var(--em); background: var(--surface); outline: none; }
+textarea { min-height: 120px; resize: vertical; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+.meter { height: 8px; background: var(--line); border-radius: 99px; overflow: hidden; margin-top: 1.8rem; }
+.meter i { display: block; height: 100%; width: 0; background: var(--em); transition: width 0.4s ease; border-radius: 99px; }
+.mt { font-size: 0.92rem; color: var(--muted); margin: 0.5rem 0 0; font-weight: 500; }
+.actions { display: flex; gap: 0.85rem; flex-wrap: wrap; margin-top: 1.8rem; }
+
+#hasil { display: none; margin-top: 2.5rem; background: var(--surface); border: 2px dashed var(--em); border-radius: 20px; padding: 2.2rem; box-shadow: 0 8px 25px rgba(0,0,0,0.02); }
+#hasil.show { display: block; animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+#hasil h4 { font: 600 1.1rem var(--sans); color: var(--em); margin: 1.5rem 0 0.4rem; }
+#hasil p { white-space: pre-wrap; color: var(--ink); }
+.meta { color: var(--muted); font-size: 0.95rem; }
+
+/* Toast Notification */
+#toast { position: fixed; bottom: 24px; right: 24px; background: var(--deep); color: #fff; padding: 0.8rem 1.4rem; border-radius: 12px; font-weight: 500; box-shadow: 0 5px 20px rgba(0,0,0,0.2); transform: translateY(100px); opacity: 0; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 1000; }
+#toast.show { transform: translateY(0); opacity: 1; }
+
+footer { text-align: center; padding: 3rem 1.5rem; color: var(--muted); font-size: 0.92rem; border-top: 1px solid var(--line); background: var(--surface); }
+
+@media (max-width: 860px) {
+  #menuBtn { display: grid; }
+  nav { position: absolute; left: 0; right: 0; top: 100%; background: var(--surface); border-bottom: 1px solid var(--line); display: none; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+  nav.open { display: block; }
+  nav ul { flex-direction: column; padding: 1rem 1.5rem 1.5rem; gap: 0.3rem; }
+  nav a { border-radius: 10px; padding: 0.8rem 1rem; }
+  .panel.on { grid-template-columns: 1fr; }
+  .bridge { grid-template-columns: 1fr; }
+  .bridge .mid { transform: rotate(90deg); margin: -0.5rem 0; }
+  .row { grid-template-columns: 1fr; }
+  section { padding: 4.5rem 1.25rem; }
+  #beranda { padding: 6rem 1.25rem 5rem; }
+  #beranda .star { width: 380px; height: 380px; right: -120px; }
+  .form { padding: 1.5rem; }
+}
+
+@media print {
+  header, footer, #prog, section:not(#refleksi), .form, #refleksi .lead, #refleksi h2, .actions { display: none !important; }
+  #hasil { display: block !important; border: none; padding: 0; box-shadow: none; }
+  body { background: #fff; color: #000; }
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+<div id="toast">Pesan status</div>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="#beranda">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="6"><rect x="22" y="22" width="56" height="56"/><rect x="22" y="22" width="56" height="56" transform="rotate(45 50 50)"/></g></svg>
+      Hakikat Manusia
+    </a>
+    <nav id="nav" aria-label="Navigasi utama">
+      <ul>
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#islam">Perspektif Islam</a></li>
+        <li><a href="#sains">Perspektif Sains</a></li>
+        <li><a href="#integrasi">Integrasi &amp; Relevansi</a></li>
+        <li><a href="#refleksi">Laporan Reflektif</a></li>
+      </ul>
+    </nav>
+    <div class="tools">
+      <button class="ico" id="themeBtn" aria-label="Ganti tema">◐</button>
+      <button class="ico" id="menuBtn" aria-label="Buka menu" aria-expanded="false" aria-controls="nav">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="beranda">
+  <svg class="star" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width=".6"><rect x="20" y="20" width="60" height="60"/><rect x="20" y="20" width="60" height="60" transform="rotate(45 50 50)"/><rect x="28" y="28" width="44" height="44" transform="rotate(22.5 50 50)"/><rect x="28" y="28" width="44" height="44" transform="rotate(67.5 50 50)"/><circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="42"/><circle cx="50" cy="50" r="14"/></g></svg>
+  <div class="wrap" style="position:relative">
+    <div class="orn"><svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M10 0l2.5 7.5L20 10l-7.5 2.5L10 20l-2.5-7.5L0 10l7.5-2.5z"/></svg></div>
+    <h1>Siapakah<br>manusia itu?</h1>
+    <p class="lead">Manusia memiliki dimensi fisik yang terukur secara empiris dan ruh yang melampaui batas laboratorium. Situs ini menyajikan eksplorasi integratif antara wahyu ilahi dan sains modern.</p>
+    <p class="hero-arab" lang="ar" dir="rtl">وَمَا خَلَقْتُ الْجِنَّ وَالْإِنْسَ إِلَّا لِيَعْبُدُونِ</p>
+    <p class="hero-ref">QS. Az-Zariyat: 56</p>
+    <div class="btns">
+      <a class="btn solid" href="#islam">Mulai dari Al-Qur’an</a>
+      <a class="btn" href="#sains">Lihat Temuan Sains</a>
+    </div>
+    <div class="pills"><span>Ruh &amp; Jasad</span><span>Fitrah Insani</span><span>Tujuan Hidup</span><span>Peran Khalifah</span></div>
+  </div>
+</section>
+
+<section id="islam">
+  <div class="wrap">
+    <h2>Perspektif Islam</h2>
+    <p class="lead">Al-Qur’an membimbing akal manusia untuk memahami tiga fondasi utama eksistensi: hakikat unsur penciptaan, potensi bawaan, dan arah tujuan hidup.</p>
+    
+    <div class="tabs" role="tablist" aria-label="Pilih ayat">
+      <button class="tab" role="tab" aria-selected="true" aria-controls="p0" id="t0">Al-Isra’: 85</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p1" id="t1">Ar-Rum: 30</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p2" id="t2">Az-Zariyat: 56</button>
+    </div>
+
+    <div class="panel on" role="tabpanel" id="p0" aria-labelledby="t0">
+      <div class="ar">
+        <p class="a" lang="ar" dir="rtl">وَيَسْأَلُونَكَ عَنِ الرُّوحِ ۖ قُلِ الرُّوحُ مِنْ أَمْرِ رَبِّي وَمَا أُوتِيتُم مِّنَ الْعِلْمِ إِلَّا قَلِيلًا</p>
+        <p class="t">“Dan mereka bertanya kepadamu tentang ruh. Katakanlah: 'Ruh itu termasuk urusan Tuhanku, dan tidaklah kamu diberi pengetahuan melainkan sedikit.'”</p>
+      </div>
+      <div class="tx">
+        <span class="k">Ruh &amp; Batas Ilmu</span>
+        <h3>Jasad Terukur, Ruh Misteri Ilahi</h3>
+        <p>Manusia terbentuk dari perpaduan unsur material (jasad) dan immaterial (ruh). Aspek fisik dapat diamati melalui sains, sementara esensi ruh berada di ranah mutlak kekuasaan Allah SWT.</p>
+        <p>Ayat ini mengajarkan integritas epistemologis: kesadaran bahwa keluasan ilmu manusia tetap memiliki batasan mutlak.</p>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1">
+      <div class="ar">
+        <p class="a" lang="ar" dir="rtl">فَأَقِمْ وَجْهَكَ لِلدِّينِ حَنِيفًا ۚ فِطْرَتَ اللَّهِ الَّتِي فَطَرَ النَّاسَ عَلَيْهَا ۚ لَا تَبْدِيلَ لِخَلْقِ اللَّهِ</p>
+        <p class="t">“Maka hadapkanlah wajahmu dengan lurus kepada agama (Islam); (tetaplah atas) fitrah Allah yang telah menciptakan manusia menurut fitrah itu. Tidak ada perubahan pada ciptaan Allah.”</p>
+      </div>
+      <div class="tx">
+        <span class="k">Konsep Fitrah</span>
+        <h3>Kecenderungan Bawaan kepada Kebenaran</h3>
+        <p>Setiap individu dilahirkan dengan membawa potensi bawaan (*fitrah*) berupa kecenderungan dasar terhadap tauhid, kebaikan, dan kebenaran moral.</p>
+        <p>Peran pendidikan dan lingkungan berfungsi untuk merawat serta menjaga kemurnian potensi tersebut agar tidak tereduksi oleh faktor eksternal.</p>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2">
+      <div class="ar">
+        <p class="a" lang="ar" dir="rtl">وَمَا خَلَقْتُ الْجِنَّ وَالْإِنْسَ إِلَّا لِيَعْبُدُونِ</p>
+        <p class="t">“Dan Aku tidak menciptakan jin dan manusia melainkan supaya mereka beribadah kepada-Ku.”</p>
+      </div>
+      <div class="tx">
+        <span class="k">Tujuan Hidup</span>
+        <h3>Ibadah sebagai Poros Eksistensi</h3>
+        <p>Ibadah dalam kerangka Islam mencakup makna yang luas; tidak terbatas pada ritual vertikal semata, melainkan seluruh aktivitas hidup yang dilandasi niat tulus dan ketaatan kepada-Nya.</p>
+        <p>Kesadaran akan tujuan ini memberikan arah yang jelas bagi pengembangan potensi akal, emosi, dan sosial manusia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sains" style="background:var(--surface)">
+  <div class="wrap">
+    <h2>Perspektif Sains Modern</h2>
+    <p class="lead">Sains menyajikan pemahaman empiris yang sangat rinci mengenai mekanisme biologis, struktur genetik, serta dinamika psikologis manusia.</p>
+    
+    <h3 style="margin-top:2.5rem">Embriologi: Perjalanan Kompleks Kehidupan</h3>
+    <div class="steps" id="steps">
+      <button class="step" aria-pressed="true" data-i="0">Zigot<small>Hari ke-1</small></button>
+      <button class="step" aria-pressed="false" data-i="1">Blastosit<small>Hari ke-5 s.d. 7</small></button>
+      <button class="step" aria-pressed="false" data-i="2">Embrio<small>Minggu ke-3 s.d. 8</small></button>
+      <button class="step" aria-pressed="false" data-i="3">Janin<small>Minggu ke-9 s.d. Lahir</small></button>
+    </div>
+    <div class="sbox" id="sbox" aria-live="polite"><p></p></div>
+    <p style="margin-top:1rem;color:var(--muted);font-size:0.95rem;">Keteraturan tahapan biologis ini sering dikorelasikan dalam kajian tafsir ilmi kontemporer dengan deskripsi ayat-ayat Al-Qur'an (misalnya QS. Al-Mu’minun: 12–14).</p>
+
+    <div class="grid3">
+      <div class="card">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 4c0 10 16 12 16 22M28 4c0 10-16 12-16 22M12 36c0-10 16-12 16-22M28 36c0-10-16-12-16-22"/></svg>
+        <h3>Biologi &amp; Genetika</h3>
+        <p>Tubuh manusia tersusun atas triliunan sel dengan cetak biru genetik (DNA) yang sangat presisi. Sel, jaringan, dan organ terintegrasi secara sistematis untuk mempertahankan homeostasis dan kelangsungan hidup.</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6a11 11 0 0 0-11 11c0 5 3 7 3 11h16c0-4 3-6 3-11A11 11 0 0 0 20 6zM15 34h10"/></svg>
+        <h3>Psikologi Biopsikososial</h3>
+        <p>Memandang manusia sebagai entitas terpadu yang dipengaruhi faktor biologis, mental, dan lingkungan sosial. Psikologi modern menelaah kesadaran, emosi, empati, serta pencarian makna hidup (*meaning of life*).</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="20" cy="20" r="14"/><path d="M20 12v9l6 4"/></svg>
+        <h3>Batasan Epistemologis</h3>
+        <p>Metode ilmiah beroperasi berdasarkan data empiris yang terukur dan teruji. Pertanyaan metafisik seperti substansi ruh dan nilai moral absolut berada di luar instrumen pengukuran fisik.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="integrasi">
+  <div class="wrap">
+    <h2>Integrasi &amp; Relevansi Sosial</h2>
+    <p class="lead">Islam dan sains bukanlah dua entitas yang dikotomis, melainkan instrumen yang saling melengkapi dalam memahami realitas ciptaan.</p>
+    
+    <div class="bridge">
+      <div>
+        <h3>Sains Menjelaskan “Bagaimana”</h3>
+        <p>Menguraikan mekanisme empiris kerja sel, jaringan saraf, anatomi tubuh, dan proses psikologis secara objektif serta terukur.</p>
+      </div>
+      <div class="mid" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h32M12 12l-8 8 8 8M28 12l8 8-8 8"/></svg>
+      </div>
+      <div>
+        <h3>Wahyu Menjelaskan “Untuk Apa”</h3>
+        <p>Memberikan orientasi makna, asal-usul ruh, nilai moral universal, serta tujuan akhir penciptaan manusia di muka bumi.</p>
+      </div>
+    </div>
+
+    <p style="margin-top: 1.5rem;">Dorongan Al-Qur'an untuk memperhatikan diri sendiri menjadikan riset ilmiah sebagai sarana memperkuat keyakinan spiritual. Di sisi lain, panduan wahyu memastikan perkembangan ilmu pengetahuan senantiasa berorientasi pada kemaslahatan etis.</p>
+
+    <div class="khal">
+      <h3>Manusia sebagai Khalifah di Bumi</h3>
+      <p>Berdasarkan amanah kekhalifahan (QS. Al-Baqarah: 30), pemahaman mendalam tentang hakikat diri menuntut mahasiswa dan intelektual untuk mengaplikasikan perannya secara nyata:</p>
+      <ul>
+        <li><b>Pengembangan Ilmu</b>Menguasai sains dan teknologi untuk memecahkan problem kemanusiaan.</li>
+        <li><b>Konservasi Lingkungan</b>Merawat keseimbangan ekosistem bumi sebagai bentuk tanggung jawab moral.</li>
+        <li><b>Integritas Akhlak</b>Menegakkan keadilan, kejujuran, dan etika profesional di lingkungan sosial.</li>
+        <li><b>Keseimbangan Holistik</b>Menjaga keharmonisan antara kesehatan fisik, ketajaman akal, dan kedalaman spiritual.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="refleksi">
+  <div class="wrap">
+    <h2>Laporan Reflektif</h2>
+    <p class="lead">Tuangkan refleksi personal Anda di bawah ini. Data Anda tersimpan otomatis di perangkat dan siap disusun menjadi laporan terstruktur.</p>
+    
+    <div class="form">
+      <div class="row">
+        <div><label for="nama">Nama Lengkap</label><input id="nama" autocomplete="name" placeholder="Contoh: Ahmad Fauzan"></div>
+        <div><label for="nim">NIM / Kelas</label><input id="nim" placeholder="Contoh: 2301... / IF-2"></div>
+      </div>
+      
+      <label for="r1">1. Apa gagasan paling mendasar yang mengubah cara pandang Anda tentang manusia?<small>Segarkan pemahaman dari sudut pandang Islam atau temuan sains.</small></label>
+      <textarea id="r1" placeholder="Tuliskan refleksi Anda di sini..."></textarea>
+      
+      <label for="r2">2. Bagaimana Anda memaknai hubungan antara ilmu pengetahuan dan keimanan?<small>Sertakan contoh konkret dari pengalaman akademik atau keseharian.</small></label>
+      <textarea id="r2" placeholder="Tuliskan refleksi Anda di sini..."></textarea>
+      
+      <label for="r3">3. Apa kekuatan serta tantangan diri Anda dalam mengemban peran sebagai khalifah?<small>Tinjau dari kapasitas Anda sebagai mahasiswa dan bagian dari masyarakat.</small></label>
+      <textarea id="r3" placeholder="Tuliskan refleksi Anda di sini..."></textarea>
+      
+      <label for="r4">4. Komitmen nyata apa yang akan mulai Anda terapkan minggu ini?<small>Tuliskan langkah kecil yang aplikatif dan konsisten.</small></label>
+      <textarea id="r4" placeholder="Tuliskan refleksi Anda di sini..."></textarea>
+      
+      <div class="meter" aria-hidden="true"><i id="bar"></i></div>
+      <p class="mt" id="mt">0 dari 4 pertanyaan terisi</p>
+      
+      <div class="actions">
+        <button class="btn em" id="susun" type="button">Susun Laporan Reflektif</button>
+        <button class="btn line" id="hapus" type="button">Kosongkan Formulir</button>
+      </div>
+    </div>
+
+    <div id="hasil" aria-live="polite">
+      <h3>Hasil Laporan Reflektif: Hakikat Manusia</h3>
+      <p class="meta" id="hMeta"></p>
+      <div id="hIsi"></div>
+      <div class="actions" style="margin-top: 2rem;">
+        <button class="btn em" id="salin" type="button">Salin Teks Laporan</button>
+        <button class="btn line" id="cetak" type="button">Cetak / Simpan PDF</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>Dibuat untuk keperluan pembelajaran mata kuliah Pendidikan Agama Islam dan Integrasi Sains.<br>Pastikan untuk melakukan verifikasi ulang ayat melalui mushaf dan literatur tafsir otoritatif.</p>
+</footer>
+
+<script>
+(function(){
+  var $ = function(i){return document.getElementById(i)}, root = document.documentElement;
+
+  /* Toast Notification Helper */
+  function showToast(msg) {
+    var t = $("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    setTimeout(function(){ t.classList.remove("show"); }, 3000);
+  }
+
+  /* Manajemen Tema */
+  try {
+    var th = localStorage.getItem("hm-tema");
+    if (th) root.setAttribute("data-theme", th);
+  } catch(e) {}
+  
+  $("themeBtn").onclick = function() {
+    var d = root.getAttribute("data-theme") === "dark" || (!root.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    var n = d ? "light" : "dark";
+    root.setAttribute("data-theme", n);
+    try { localStorage.setItem("hm-tema", n); } catch(e) {}
+  };
+
+  /* Mobile Navigation Toggle */
+  var nav = $("nav"), mb = $("menuBtn");
+  function tutup() { nav.classList.remove("open"); mb.setAttribute("aria-expanded", "false"); mb.textContent = "☰"; }
+  mb.onclick = function() {
+    var o = nav.classList.toggle("open");
+    mb.setAttribute("aria-expanded", o);
+    mb.textContent = o ? "✕" : "☰";
+  };
+  nav.onclick = function(e) { if(e.target.tagName === "A") tutup(); };
+
+  /* Scroll Progress & Active Nav */
+  var links = [].slice.call(nav.querySelectorAll("a"));
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(en.isIntersecting) links.forEach(function(l){ l.classList.toggle("on", l.getAttribute("href") === "#" + en.target.id); });
+      });
+    }, {rootMargin: "-40% 0px -55% 0px"});
+    document.querySelectorAll("main section").forEach(function(s){ io.observe(s); });
+  }
+  addEventListener("scroll", function(){
+    var h = document.documentElement;
+    $("prog").style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100 || 0) + "%";
+  }, {passive: true});
+
+  /* Tab Interaktif Perspektif Islam */
+  var tabs = [].slice.call(document.querySelectorAll(".tab"));
+  function pilihTab(k) {
+    tabs.forEach(function(t, i){
+      var on = i === k;
+      t.setAttribute("aria-selected", on);
+      t.tabIndex = on ? 0 : -1;
+      $("p" + i).classList.toggle("on", on);
+    });
+  }
+  tabs.forEach(function(t, i){
+    t.onclick = function(){ pilihTab(i); };
+    t.onkeydown = function(e){
+      var k = e.key === "ArrowRight" ? (i + 1) % 3 : e.key === "ArrowLeft" ? (i + 2) % 3 : -1;
+      if(k >= 0) { pilihTab(k); tabs[k].focus(); }
+    };
+  });
+
+  /* Tahap Embriologi Sains */
+  var info = [
+    "Pembuahan sel telur oleh spermatozoa menghasilkan zigot, yakni sel tunggal yang membawa kode genetik utuh gabungan kedua orang tua. Proses pembelahan sel dimulai segera setelahnya.",
+    "Melalui pembelahan berkelanjutan, sel-sel membentuk struktur blastosit yang kemudian melakukan implantasi ke dinding rahim. Sebagian sel berkembang menjadi embrio, sementara sebagian lainnya membentuk plasenta.",
+    "Terbentuknya organ-organ utama tubuh (*organogenesis*), termasuk sistem saraf pusat, jantung, dan struktur dasar anggota tubuh. Fase ini merupakan masa paling krusial dalam perkembangan prenatal.",
+    "Fase pematangan struktur organ yang telah terbentuk. Janin mulai menunjukkan aktivitas motorik, merespons rangsangan sensorik, dan bersiap menghadapi kehidupan ekstraterin hingga waktu kelahiran."
+  ];
+  var st = [].slice.call(document.querySelectorAll(".step"));
+  function pilihStep(i) {
+    st.forEach(function(b, k){ b.setAttribute("aria-pressed", k === i); });
+    $("sbox").firstChild.textContent = info[i];
+  }
+  st.forEach(function(b, i){ b.onclick = function(){ pilihStep(i); }; });
+  pilihStep(0);
+
+  /* Form & LocalStorage Laporan Reflektif */
+  var ids = ["nama", "nim", "r1", "r2", "r3", "r4"];
+  var judul = ["Gagasan / Perubahan Cara Pandang", "Hubungan Ilmu dan Iman", "Kekuatan & Tantangan sebagai Khalifah", "Komitmen Nyata"];
+  
+  function progres() {
+    var n = 0;
+    for (var k = 1; k <= 4; k++) if ($("r" + k).value.trim()) n++;
+    $("bar").style.width = (n * 25) + "%";
+    $("mt").textContent = n + " dari 4 pertanyaan terisi";
+  }
+  
+  try {
+    var sv = JSON.parse(localStorage.getItem("hm-refleksi") || "{}");
+    ids.forEach(function(i){ if(sv[i]) $(i).value = sv[i]; });
+  } catch(e) {}
+  
+  progres();
+  
+  function simpan() {
+    try {
+      var o = {};
+      ids.forEach(function(i){ o[i] = $(i).value; });
+      localStorage.setItem("hm-refleksi", JSON.stringify(o));
+    } catch(e) {}
+    progres();
+  }
+  ids.forEach(function(i){ $(i).addEventListener("input", simpan); });
+
+  function teksLaporan() {
+    var n = $("nama").value.trim() || "(Tanpa Nama)", m = $("nim").value.trim();
+    var s = "LAPORAN REFLEKTIF: HAKIKAT MANUSIA\n" + "Nama: " + n + (m ? " | NIM/Kelas: " + m : "") + "\n----------------------------------------\n";
+    judul.forEach(function(j, k){
+      s += "\n" + (k + 1) + ". " + j + "\n" + ($("r" + (k + 1)).value.trim() || "-") + "\n";
+    });
+    return s;
+  }
+
+  $("susun").onclick = function() {
+    var n = $("nama").value.trim() || "(Tanpa Nama)", m = $("nim").value.trim();
+    $("hMeta").textContent = "Disusun oleh: " + n + (m ? " (" + m + ")" : "");
+    var h = $("hIsi"); h.innerHTML = "";
+    
+    judul.forEach(function(j, k){
+      var t = document.createElement("h4"); t.textContent = (k + 1) + ". " + j;
+      var p = document.createElement("p"); p.textContent = $("r" + (k + 1)).value.trim() || "-";
+      h.appendChild(t); h.appendChild(p);
+    });
+    
+    $("hasil").classList.add("show");
+    $("hasil").scrollIntoView({behavior: "smooth", block: "start"});
+    showToast("Laporan reflektif berhasil disusun!");
+  };
+
+  $("hapus").onclick = function() {
+    if(confirm("Apakah Anda yakin ingin mengosongkan seluruh isian formulir?")) {
+      ids.forEach(function(i){ $(i).value = ""; });
+      simpan();
+      $("hasil").classList.remove("show");
+      showToast("Formulir berhasil dikosongkan.");
+    }
+  };
+
+  $("salin").onclick = function() {
+    var s = teksLaporan();
+    function fallbackCopy() {
+      var ta = document.createElement("textarea"); ta.value = s;
+      document.body.appendChild(ta); ta.select();
+      try {
+        document.execCommand("copy");
+        showToast("Teks berhasil disalin ke clipboard!");
+      } catch(e) {
+        showToast("Gagal menyalin otomatis. Silakan blok teks manual.");
+      }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(s).then(function(){
+        showToast("Teks berhasil disalin ke clipboard!");
+      }, fallbackCopy);
+    } else {
+      fallbackCopy();
+    }
+  };
+
+  $("cetak").onclick = function() {
+    window.print();
+  };
+
+})();
+</script>
+</body>
+</html>
